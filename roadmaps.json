@@ -1,0 +1,446 @@
+[
+    {
+        "id": "web-gelistirme",
+        "title": "Web Geliştirme",
+        "icon": "code-slash-outline",
+        "heroSubtitle": "Modern web siteleri ve uygulamaları geliştirmek için adım adım rehber.",
+        "description": "HTML, CSS, JavaScript ve modern frameworkler ile frontend ve backend dünyasına adım atın.",
+        "steps": [
+            {
+                "phase": "1. AŞAMA - İnternet Nasıl Çalışır?",
+                "topics": [
+                    "Web nedir?",
+                    "Browser nasıl çalışır?",
+                    "HTTP nedir?",
+                    "Domain & Hosting",
+                    "DNS",
+                    "Client - Server mantığı",
+                    "Frontend vs Backend farkı",
+                    "API nedir?"
+                ]
+            },
+            {
+                "phase": "2. AŞAMA - HTML",
+                "topics": [
+                    "HTML yapısı",
+                    "Tags",
+                    "Head, body",
+                    "Form",
+                    "Input",
+                    "Button",
+                    "Table",
+                    "Semantic tags (header, section, article, footer)",
+                    "SEO temeli"
+                ]
+            },
+            {
+                "phase": "3. AŞAMA - CSS",
+                "topics": [
+                    "Selectors",
+                    "Box Model",
+                    "Margin / Padding",
+                    "Flexbox",
+                    "Grid",
+                    "Responsive design",
+                    "Media queries",
+                    "Position",
+                    "Z-index",
+                    "Animasyon",
+                    "Transition"
+                ]
+            },
+            {
+                "phase": "4. AŞAMA - JavaScript",
+                "topics": [
+                    "Değişkenler ve veri tipleri",
+                    "If / else",
+                    "For / while",
+                    "Fonksiyonlar",
+                    "Array",
+                    "Object",
+                    "DOM manipulation",
+                    "Event handling",
+                    "Fetch API",
+                    "Async / Await",
+                    "Promise",
+                    "LocalStorage"
+                ]
+            },
+            {
+                "phase": "5. AŞAMA - Git & GitHub",
+                "topics": [
+                    "git init",
+                    "commit",
+                    "branch",
+                    "merge",
+                    "pull",
+                    "push",
+                    "pull request"
+                ]
+            },
+            {
+                "phase": "6. AŞAMA - React",
+                "topics": [
+                    "Component mantığı",
+                    "Props",
+                    "State",
+                    "useState",
+                    "useEffect",
+                    "Routing",
+                    "Form handling",
+                    "API integration",
+                    "Context API",
+                    "Next.js (isteğe bağlı)"
+                ]
+            },
+            {
+                "phase": "7. AŞAMA - Backend",
+                "topics": [
+                    "Node.js + Express veya Java Spring Boot",
+                    "REST API",
+                    "CRUD",
+                    "Middleware",
+                    "Authentication (JWT)",
+                    "Database bağlantısı",
+                    "PostgreSQL veya MongoDB"
+                ]
+            },
+            {
+                "phase": "8. AŞAMA - Full Stack Proje",
+                "topics": [
+                    "Login sistemi",
+                    "Admin panel",
+                    "REST API",
+                    "Database",
+                    "Responsive tasarım",
+                    "Deployment"
+                ]
+            },
+            {
+                "phase": "9. AŞAMA - Deployment & DevOps Temeli",
+                "topics": [
+                    "Vercel",
+                    "Netlify",
+                    "Render",
+                    "Railway",
+                    "Docker (temel)",
+                    "Environment variables"
+                ]
+            },
+            {
+                "phase": "10. AŞAMA - Bilgisayar Bilimi Temeli",
+                "topics": [
+                    "HTTP derinlemesine",
+                    "Web security (XSS, CSRF)",
+                    "CORS",
+                    "Caching",
+                    "Performance optimization"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "veri-bilimi",
+        "title": "Python İle Veri Bilimi",
+        "icon": "analytics-outline",
+        "heroSubtitle": "Python kullanarak veri analizi ve yapay zeka dünyasına giriş yapın.",
+        "description": "Veri analizi, görselleştirme ve makine öğrenmesi temellerini öğrenin.",
+        "steps": [
+            {
+                "phase": "1. AŞAMA - Python Temelleri",
+                "topics": [
+                    "Değişkenler ve Veri Tipleri",
+                    "List, Dictionary, Tuple, Set",
+                    "Döngüler (For, While)",
+                    "Koşullu İfadeler (If/Else)",
+                    "Fonksiyonlar ve Modüller",
+                    "Hata Yönetimi (Try/Except)"
+                ]
+            },
+            {
+                "phase": "2. AŞAMA - Matematik & İstatistik",
+                "topics": [
+                    "Lineer Cebir Temelleri",
+                    "Olasılık Dağılımları",
+                    "Tanımlayıcı İstatistik",
+                    "Hipotez Testleri",
+                    "Korelasyon ve Regresyon"
+                ]
+            },
+            {
+                "phase": "3. AŞAMA - Veri İşleme (NumPy & Pandas)",
+                "topics": [
+                    "NumPy: Çok Boyutlu Diziler",
+                    "Pandas: DataFrame İşlemleri",
+                    "Veri Temizleme (Handling Missing Values)",
+                    "Veri Filtreleme ve Gruplama",
+                    "Feature Engineering"
+                ]
+            },
+            {
+                "phase": "4. AŞAMA - Veri Görselleştirme",
+                "topics": [
+                    "Matplotlib Temelleri",
+                    "Seaborn ile İstatistiksel Grafikler",
+                    "Plotly ile İnteraktif Grafikler",
+                    "Dashboard Tasarımı (Streamlit)"
+                ]
+            },
+            {
+                "phase": "5. AŞAMA - SQL",
+                "topics": [
+                    "Temel Sorgular (SELECT, WHERE, JOIN)",
+                    "Agregasyon Fonksiyonları",
+                    "Subqueries ve Window Functions",
+                    "Database Tasarımı Temelleri"
+                ]
+            },
+            {
+                "phase": "6. AŞAMA - Machine Learning (Giriş)",
+                "topics": [
+                    "Supervised Learning: Regresyon",
+                    "Classification: KNN, Naive Bayes",
+                    "Model Evaluation (RMSE, Accuracy)",
+                    "Scikit-Learn Kullanımı"
+                ]
+            },
+            {
+                "phase": "7. AŞAMA - Machine Learning (İleri)",
+                "topics": [
+                    "Decision Trees & Random Forest",
+                    "Support Vector Machines (SVM)",
+                    "XGBoost ve LightGBM",
+                    "Unsupervised Learning (K-Means Clustering)"
+                ]
+            },
+            {
+                "phase": "8. AŞAMA - Deep Learning (Giriş)",
+                "topics": [
+                    "Yapay Sinir Ağları (ANN)",
+                    "TensorFlow & Keras Temelleri",
+                    "PyTorch Temelleri",
+                    "Activation Functions"
+                ]
+            },
+            {
+                "phase": "9. AŞAMA - Büyük Veri & Bulut",
+                "topics": [
+                    "PySpark ile Büyük Veri",
+                    "AWS / Google Cloud Machine Learning",
+                    "Model Deployment (Flask/FastAPI)",
+                    "MLOps Temelleri"
+                ]
+            },
+            {
+                "phase": "10. AŞAMA - Bitirme Projesi",
+                "topics": [
+                    "Gerçek Dünya Veri Seti Analizi",
+                    "Görselleştirme ve Raporlama",
+                    "Model Eğitimi ve Optimizasyonu",
+                    "GitHub Portfolyo Oluşturma"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "mobil-uygulama",
+        "title": "Mobil Uygulama Geliştirme",
+        "icon": "smartphone-outline",
+        "heroSubtitle": "Popüler frameworkler ile modern mobil uygulamalar inşa edin.",
+        "description": "React Native veya Flutter ile iOS ve Android uygulamaları geliştirmeyi öğrenin.",
+        "steps": [
+            {
+                "phase": "1. AŞAMA - Mobil Dünyaya Giriş",
+                "topics": [
+                    "Native vs Hybrid vs Cross-Platform",
+                    "iOS vs Android Dinamikleri",
+                    "UI/UX Prensipleri",
+                    "Mobil Framework Seçimi (React Native vs Flutter)"
+                ]
+            },
+            {
+                "phase": "2. AŞAMA - Dil Temelleri (JavaScript/Dart)",
+                "topics": [
+                    "Eğer React Native: ES6+ JavaScript, TypeScript",
+                    "Eğer Flutter: Dart Programlama Dili",
+                    "Asenkron Programlama (Async/Await)",
+                    "Nesne Yönelimli Programlama (OOP)"
+                ]
+            },
+            {
+                "phase": "3. AŞAMA - Framework Temelleri",
+                "topics": [
+                    "Component/Widget Mantığı",
+                    "Props ve State Yönetimi",
+                    "Layout: Flexbox Kullanımı",
+                    "Temel UI Elementleri (Button, Image, Text)"
+                ]
+            },
+            {
+                "phase": "4. AŞAMA - Navigasyon",
+                "topics": [
+                    "Stack Navigation",
+                    "Tab Navigation",
+                    "Drawer Navigation",
+                    "Deep Linking Temelleri"
+                ]
+            },
+            {
+                "phase": "5. AŞAMA - API & Veri Yönetimi",
+                "topics": [
+                    "Axios veya Fetch Kullanımı",
+                    "JSON Veri İşleme",
+                    "Offline Storage (AsyncStorage/Hive)",
+                    "Image Caching"
+                ]
+            },
+            {
+                "phase": "6. AŞAMA - State Management (İleri)",
+                "topics": [
+                    "Redux veya Context API (React Native)",
+                    "Provider, Riverpod veya Bloc (Flutter)",
+                    "Global State Takibi"
+                ]
+            },
+            {
+                "phase": "7. AŞAMA - Cihaz Özelliklerini Kullanma",
+                "topics": [
+                    "Kamera ve Galeri Erişimi",
+                    "Konum Servisleri (GPS)",
+                    "Push Notifications (Firebase Cloud Messaging)",
+                    "Sensörler (Akselerometre vb.)"
+                ]
+            },
+            {
+                "phase": "8. AŞAMA - Firebase Entegrasyonu",
+                "topics": [
+                    "Firebase Authentication",
+                    "Cloud Firestore (Database)",
+                    "Remote Config",
+                    "Crashlytics & Analytics"
+                ]
+            },
+            {
+                "phase": "9. AŞAMA - Animasyon & Performans",
+                "topics": [
+                    "Lottie Animasyonları",
+                    "Performans Optimizasyonu",
+                    "Liste Performansı (FlatList/ListView)",
+                    "Debug Araçları"
+                ]
+            },
+            {
+                "phase": "10. AŞAMA - Yayınlama",
+                "topics": [
+                    "App Store (iOS) Hazırlık",
+                    "Play Store (Android) Hazırlık",
+                    "Code Signing",
+                    "CI/CD (Fastlane/GitHub Actions)"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "siber-guvenlik",
+        "title": "Siber Güvenlik",
+        "icon": "shield-checkmark-outline",
+        "heroSubtitle": "Dijital dünyayı korumayı ve siber tehditleri anlamayı öğrenin.",
+        "description": "Ağ güvenliği, etik hackleme ve sistem savunması üzerine uzmanlaşın.",
+        "steps": [
+            {
+                "phase": "1. AŞAMA - Network Temelleri",
+                "topics": [
+                    "OSI Modeli",
+                    "TCP/IP Protokolü",
+                    "HTTP/HTTPS, SSH, FTP Mantığı",
+                    "DNS ve IP Yapılandırması",
+                    "Subnetting"
+                ]
+            },
+            {
+                "phase": "2. AŞAMA - İşletim Sistemleri (Linux)",
+                "topics": [
+                    "Linux Komut Satırı",
+                    "Dosya Sistemi ve İzinler",
+                    "Bash Scripting",
+                    "Kali Linux ve Parrot OS Kullanımı",
+                    "System Administration"
+                ]
+            },
+            {
+                "phase": "3. AŞAMA - Etik Hackleme Giriş",
+                "topics": [
+                    "Keşif (Information Gathering)",
+                    "Google Dorking",
+                    "WHOIS ve DNS Keşfi",
+                    "Hacking Metodolojisi"
+                ]
+            },
+            {
+                "phase": "4. AŞAMA - Network Hacking",
+                "topics": [
+                    "Nmap ile Port Tarama",
+                    "Wireshark ile Paket Analizi",
+                    "Man-in-the-Middle (MitM) Saldırıları",
+                    "Metasploit Temelleri"
+                ]
+            },
+            {
+                "phase": "5. AŞAMA - Web Güvenliği (OWASP Top 10)",
+                "topics": [
+                    "SQL Injection",
+                    "Cross-Site Scripting (XSS)",
+                    "Cross-Site Request Forgery (CSRF)",
+                    "Insecure Direct Object References (IDOR)",
+                    "Burp Suite Kullanımı"
+                ]
+            },
+            {
+                "phase": "6. AŞAMA - Malware Analizi",
+                "topics": [
+                    "Statik ve Dinamik Analiz",
+                    "Tersine Mühendislik (Reverse Engineering)",
+                    "Virüslü Dosya Analizi",
+                    "Sandbox Ortamları"
+                ]
+            },
+            {
+                "phase": "7. AŞAMA - Sistem Sızma (System Hacking)",
+                "topics": [
+                    "Password Cracking (John the Ripper/Hashcat)",
+                    "Yetki Yükseltme (Privilege Escalation)",
+                    "Exploitation ve Post-Exploitation",
+                    "Active Directory Güvenliği"
+                ]
+            },
+            {
+                "phase": "8. AŞAMA - Savunma (Defensive Security)",
+                "topics": [
+                    "Firewall ve IDS/IPS Sistemleri",
+                    "SIEM Araçları (Splunk/ELK)",
+                    "Incident Response",
+                    "Security Operations Center (SOC) Temelleri"
+                ]
+            },
+            {
+                "phase": "9. AŞAMA - Kriptografi",
+                "topics": [
+                    "Simetrik ve Asimetrik Şifreleme",
+                    "Hashing Algoritmaları",
+                    "Digital Signatures",
+                    "SSL/TLS Sertifikaları"
+                ]
+            },
+            {
+                "phase": "10. AŞAMA - Kariyer & Sertifikasyon",
+                "topics": [
+                    "CompTIA Security+",
+                    "CEH (Certified Ethical Hacker)",
+                    "OSCP Hazırlık",
+                    "Bug Bounty Programları",
+                    "Etik ve Yasal Mevzuat"
+                ]
+            }
+        ]
+    }
+]

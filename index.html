@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCompass - Sizin Yol Haritanız</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="auth-modal.css">
+</head>
+
+<body>
+
+<header>
+    <h1>TechCompass</h1>
+
+    <nav>
+        <div class="nav-links" id="navLinks">
+            <a href="#">Ana Sayfa</a>
+            <a href="#roadmaps">Yol Haritaları</a>
+            <a href="#footer">İletişim</a>
+        </div>
+    </nav>
+
+    <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+            <ion-icon name="moon-outline"></ion-icon>
+        </button>
+
+        <!-- Auth button (logged out) -->
+        <button class="btn-auth-open" id="openAuthModal">
+            <ion-icon name="person-outline"></ion-icon> Giriş Yap
+        </button>
+
+        <!-- User info (logged in) -->
+        <div class="user-info" id="userInfo">
+            <div class="user-avatar" id="userAvatar">?</div>
+            <span class="user-email-display" id="userEmailDisplay"></span>
+            <button class="btn-logout" id="logoutBtn">Çıkış</button>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+            <ion-icon name="menu-outline"></ion-icon>
+        </button>
+    </div>
+</header>
+
+    <main>
+        <section class="hero">
+            <h2>Bilgiyi değil, yolu gösterir.</h2>
+            <p>Yazılım dünyasında kaybolmayın. TechCompass ile kariyer hedeflerinize en uygun yol haritasını keşfedin.
+            </p>
+            <a href="#roadmaps">
+                <button class="btn-primary">Hadi Başlayalım!</button>
+            </a>
+        </section>
+
+        <div class="controls">
+            <div class="search-bar">
+                <ion-icon name="search-outline" class="search-icon"></ion-icon>
+                <input type="text" id="searchInput" placeholder="Yol haritası ara... (ör. Web, Python)">
+            </div>
+        </div>
+
+        <h2 class="section-title" id="roadmaps">Yol Haritalarımız</h2>
+
+        <section class="roadmaps-container" id="roadmapGrid">
+            <p>Yol haritaları yükleniyor...</p>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>İletişim</p>
+            <div class="social-icons">
+                <a href="#" target="_blank">
+                    <img src="source/insta_icon.png" alt="Instagram">
+                </a>
+                <a href="#" target="_blank">
+                    <img src="source/gmail_icon.png" alt="Email">
+                </a>
+            </div>
+            <p class="copyright">TechCompass &copy; Tüm hakları saklıdır</p>
+        </div>
+    </footer>
+
+
+<!-- Auth Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay"></div>
+
+<!-- Auth Modal -->
+<div class="auth-modal" id="authModal">
+  <button class="auth-modal-close" id="closeModal">&times;</button>
+  <div class="auth-modal-header">
+    <h2>TechCompass'a Hoş Geldiniz</h2>
+    <p>Yol haritalarına erişmek için giriş yapın.</p>
+  </div>
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="tabLogin">Giriş Yap</button>
+    <button class="auth-tab" id="tabSignup">Kayıt Ol</button>
+  </div>
+  <div id="authMessage" class="auth-message"></div>
+
+  <!-- Login Form -->
+  <form class="auth-form" id="loginForm">
+    <div class="auth-field">
+      <label>E-posta</label>
+      <input type="email" id="loginEmail" placeholder="ornek@email.com" required />
+    </div>
+    <div class="auth-field">
+      <label>Şifre</label>
+      <input type="password" id="loginPassword" placeholder="••••••••" required />
+    </div>
+    <button type="button" class="auth-forgot" id="forgotPassword">Şifremi unuttum</button>
+    <button type="submit" class="auth-submit">Giriş Yap</button>
+  </form>
+
+  <!-- Signup Form -->
+  <form class="auth-form" id="signupForm" style="display:none">
+    <div class="auth-field">
+      <label>E-posta</label>
+      <input type="email" id="signupEmail" placeholder="ornek@email.com" required />
+    </div>
+    <div class="auth-field">
+      <label>Şifre</label>
+      <input type="password" id="signupPassword" placeholder="Min. 6 karakter" required />
+    </div>
+    <div class="auth-field">
+      <label>Şifre Tekrar</label>
+      <input type="password" id="signupConfirm" placeholder="Şifreyi tekrarla" required />
+    </div>
+    <button type="submit" class="auth-submit">Kayıt Ol</button>
+  </form>
+</div>
+
+<!-- Firebase (add BEFORE your other scripts) -->
+<script type="module" src="firebase.js"></script>
+<script type="module" src="auth.js"></script>
+
+
+
+
+
+    <script src="roadmaps-data.js"></script>
+    <script src="site.js"></script>
+</body>
+
+</html>

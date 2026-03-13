@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="source/teknoziraat1.webp" type="image/webp">
+    <title>TechCompass - Yol Haritası</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="auth-modal.css">
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="index.html">TechCompass</a></h1>
+        <nav>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="index.html#roadmaps">Yol Haritaları</a>
+                <a href="#footer">İletişim</a>
+            </div>
+        </nav>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                <ion-icon name="moon-outline"></ion-icon>
+            </button>
+            <button class="btn-auth-open" id="openAuthModal">
+                <ion-icon name="person-outline"></ion-icon> Giriş Yap
+            </button>
+            <div class="user-info" id="userInfo">
+                <div class="user-avatar" id="userAvatar">?</div>
+                <span class="user-email-display" id="userEmailDisplay"></span>
+                <button class="btn-logout" id="logoutBtn">Çıkış</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="min-height: 40vh; padding: 2rem;">
+            <h2 id="roadmapTitle">Yükleniyor...</h2>
+            <p id="roadmapDescription"></p>
+        </section>
+
+        <section class="content-section">
+            <div id="roadmapContent">
+                <!-- Steps injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>İletişim</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/tekno_ziraat/" target="_blank">
+                    <img src="source/insta_icon.png" alt="Instagram">
+                </a>
+                <a href="mailto:teknoziraattoplulugu@gmail.com" target="_blank">
+                    <img src="source/gmail_icon.png" alt="Email">
+                </a>
+            </div>
+            <p class="copyright">TechCompass &copy; Tüm hakları saklıdır</p>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="auth-modal" id="authModal">
+        <button class="auth-modal-close" id="closeModal">&times;</button>
+        <div class="auth-modal-header">
+            <h2>TechCompass'a Hoş Geldiniz</h2>
+            <p>Yol haritalarına erişmek için giriş yapın.</p>
+        </div>
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tabLogin">Giriş Yap</button>
+            <button class="auth-tab" id="tabSignup">Kayıt Ol</button>
+        </div>
+        <div id="authMessage" class="auth-message"></div>
+        <form class="auth-form" id="loginForm">
+            <div class="auth-field">
+                <label>E-posta</label>
+                <input type="email" id="loginEmail" placeholder="ornek@email.com" required />
+            </div>
+            <div class="auth-field">
+                <label>Şifre</label>
+                <input type="password" id="loginPassword" placeholder="••••••••" required />
+            </div>
+            <button type="button" class="auth-forgot" id="forgotPassword">Şifremi unuttum</button>
+            <button type="submit" class="auth-submit">Giriş Yap</button>
+        </form>
+        <form class="auth-form" id="signupForm" style="display:none">
+            <div class="auth-field">
+                <label>E-posta</label>
+                <input type="email" id="signupEmail" placeholder="ornek@email.com" required />
+            </div>
+            <div class="auth-field">
+                <label>Şifre</label>
+                <input type="password" id="signupPassword" placeholder="Min. 6 karakter" required />
+            </div>
+            <div class="auth-field">
+                <label>Şifre Tekrar</label>
+                <input type="password" id="signupConfirm" placeholder="Şifreyi tekrarla" required />
+            </div>
+            <button type="submit" class="auth-submit">Kayıt Ol</button>
+        </form>
+    </div>
+
+    <script src="roadmaps-data.js"></script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script src="site.js"></script>
+
+    <script>
+        // Get ?id=web-gelistirme from the URL
+        const params = new URLSearchParams(window.location.search);
+        const roadmapId = params.get('id');
+
+        const data = ROADMAP_DATA.find(r => r.id === roadmapId);
+
+        if (!data) {
+            document.getElementById('roadmapTitle').textContent = 'Yol haritası bulunamadı.';
+        } else {
+            // Set page title
+            document.title = `TechCompass - ${data.title}`;
+
+            // Fill hero
+            document.getElementById('roadmapTitle').textContent = data.heroSubtitle || data.title;
+            document.getElementById('roadmapDescription').textContent = data.description;
+
+            // Fill steps
+            const container = document.getElementById('roadmapContent');
+            data.steps.forEach(step => {
+                const div = document.createElement('div');
+                div.className = 'roadmap-step';
+                div.innerHTML = `
+                    <span>${step.phase}</span>
+                    <p>${step.topics.join('<br>')}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+    </script>
+
+</body>
+</html>
