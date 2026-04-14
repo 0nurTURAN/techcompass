@@ -48,6 +48,15 @@
         </section>
 
         <section class="content-section">
+            <div class="roadmap-progress-container" id="roadmapProgressContainer">
+                <div class="progress-header">
+                    <span>İlerleme Durumu</span>
+                    <span id="progressText">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+            </div>
             <div id="roadmapContent">
                 <!-- Steps injected by JS -->
             </div>
@@ -135,15 +144,48 @@
 
             // Fill steps
             const container = document.getElementById('roadmapContent');
-            data.steps.forEach(step => {
+            const savedStr = localStorage.getItem(`techcompass_progress_${roadmapId}`);
+            let savedData = {};
+            if (savedStr) {
+                try { savedData = JSON.parse(savedStr); } catch(e){}
+            }
+
+            data.steps.forEach((step, index) => {
+                let allTopicsChecked = true;
+                const topicHtml = step.topics.map((topic, tIndex) => {
+                    const isChecked = savedData[`${index}-${tIndex}`] ? 'checked' : '';
+                    if (!isChecked) allTopicsChecked = false;
+                    return `
+                    <div class="topic-item">
+                        <div class="topic-checkbox">
+                            <input type="checkbox" id="topic-${roadmapId}-${index}-${tIndex}" onchange="updateStageCheckbox(this)" ${isChecked}>
+                        </div>
+                        <label for="topic-${roadmapId}-${index}-${tIndex}">${topic}</label>
+                    </div>
+                `}).join('');
+                if (step.topics.length === 0) allTopicsChecked = false;
+                
+                const stepChecked = allTopicsChecked ? 'checked' : '';
+
                 const div = document.createElement('div');
                 div.className = 'roadmap-step';
                 div.innerHTML = `
-                    <span>${step.phase}</span>
-                    <p>${step.topics.join('<br>')}</p>
+                    <div class="step-checkbox">
+                        <input type="checkbox" id="step-${roadmapId}-${index}" onchange="toggleAllTopics(this)" ${stepChecked}>
+                    </div>
+                    <div class="step-content">
+                        <label for="step-${roadmapId}-${index}"><span>${step.phase}</span></label>
+                        <div class="topics-list">
+                            ${topicHtml}
+                        </div>
+                    </div>
                 `;
                 container.appendChild(div);
             });
+            // Initialize progress bar
+            if (typeof updateProgressBar === 'function') {
+                updateProgressBar();
+            }
         }
     </script>
 

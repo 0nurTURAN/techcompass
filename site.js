@@ -149,15 +149,48 @@ async function loadRoadmap(roadmapId) {
         // Clear container
         container.innerHTML = '';
 
-        roadmap.steps.forEach(step => {
+        const savedStr = localStorage.getItem(`techcompass_progress_${roadmapId}`);
+        let savedData = {};
+        if (savedStr) {
+            try { savedData = JSON.parse(savedStr); } catch(e){}
+        }
+
+        roadmap.steps.forEach((step, index) => {
+            let allTopicsChecked = true;
+            const topicHtml = step.topics.map((topic, tIndex) => {
+                const isChecked = savedData[`${index}-${tIndex}`] ? 'checked' : '';
+                if (!isChecked) allTopicsChecked = false;
+                return `
+                <div class="topic-item">
+                    <div class="topic-checkbox">
+                        <input type="checkbox" id="topic-dyn-${roadmapId}-${index}-${tIndex}" onchange="updateStageCheckbox(this)" ${isChecked}>
+                    </div>
+                    <label for="topic-dyn-${roadmapId}-${index}-${tIndex}">${topic}</label>
+                </div>
+            `}).join('');
+            if (step.topics.length === 0) allTopicsChecked = false;
+
+            const stepChecked = allTopicsChecked ? 'checked' : '';
+
             const stepHtml = `
                 <div class="roadmap-step">
-                    <span>${step.phase}</span>
-                    <p>${step.topics.join(' • ')}</p>
+                    <div class="step-checkbox">
+                        <input type="checkbox" id="step-dyn-${roadmapId}-${index}" onchange="toggleAllTopics(this)" ${stepChecked}>
+                    </div>
+                    <div class="step-content">
+                        <label for="step-dyn-${roadmapId}-${index}"><span>${step.phase}</span></label>
+                        <div class="topics-list">
+                            ${topicHtml}
+                        </div>
+                    </div>
                 </div>
             `;
             container.innerHTML += stepHtml;
         });
+
+        if (typeof updateProgressBar === 'function') {
+            updateProgressBar();
+        }
 
     } catch (error) {
         console.error('Error loading roadmap:', error);
@@ -184,12 +217,35 @@ async function renderHomeCards() {
             const linkHref = hasContent ? `roadmap.html?id=${roadmap.id}` : '#';
             const onClickAttr = hasContent ? '' : 'onclick="alert(\'Yakında eklenecek!\')"';
 
+            let percentage = 0;
+            if (hasContent) {
+                const savedStr = localStorage.getItem(`techcompass_progress_${roadmap.id}`);
+                const totalTopics = roadmap.steps.reduce((sum, step) => sum + (step.topics ? step.topics.length : 0), 0);
+                if (savedStr && totalTopics > 0) {
+                    try {
+                        const savedData = JSON.parse(savedStr);
+                        const checkedCount = Object.values(savedData).filter(v => v === true).length;
+                        percentage = Math.round((checkedCount / totalTopics) * 100);
+                    } catch(e) {}
+                }
+            }
+
+            const progressBarHtml = hasContent ? `
+                <div class="card-progress-container">
+                    <div class="card-progress-title"><span>İlerleme</span><span>${percentage}%</span></div>
+                    <div class="card-progress-bg">
+                        <div class="card-progress-fill" style="width: ${percentage}%;"></div>
+                    </div>
+                </div>
+            ` : '';
+
             card.innerHTML = `
                 <div class="card-header">
                     <ion-icon name="${roadmap.icon || 'map-outline'}"></ion-icon>
                     <h3>${roadmap.title}</h3>
                 </div>
                 <p>${roadmap.description}</p>
+                ${progressBarHtml}
                 <a href="${linkHref}" class="card-link" ${onClickAttr}>Görüntüle</a>
             `;
             grid.appendChild(card);
@@ -224,5 +280,71 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// --- Checkbox Synchronization & Progress ---
+function updateProgressBar() {
+    const container = document.getElementById('roadmapContent');
+    if (!container) return;
+    
+    const topicCheckboxes = container.querySelectorAll('.topics-list input[type="checkbox"]');
+    if (topicCheckboxes.length === 0) return;
+    
+    let roadmapId = new URLSearchParams(window.location.search).get('id');
+    if (!roadmapId && topicCheckboxes[0]) {
+        const idParts = topicCheckboxes[0].id.split('-');
+        idParts.pop(); idParts.pop();
+        roadmapId = idParts.filter(p => p !== 'topic' && p !== 'dyn').join('-');
+    }
+
+    const total = topicCheckboxes.length;
+    let checkedCount = 0;
+    const progressData = {};
+
+    topicCheckboxes.forEach(cb => {
+        if (cb.checked) checkedCount++;
+        const parts = cb.id.split('-');
+        const tIndex = parts.pop();
+        const index = parts.pop();
+        progressData[`${index}-${tIndex}`] = cb.checked;
+    });
+
+    if (roadmapId) {
+        localStorage.setItem(`techcompass_progress_${roadmapId}`, JSON.stringify(progressData));
+    }
+
+    const percentage = Math.round((checkedCount / total) * 100);
+    
+    const progressBarFill = document.getElementById('progressBarFill');
+    const progressText = document.getElementById('progressText');
+    
+    if (progressBarFill) {
+        progressBarFill.style.width = percentage + '%';
+    }
+    if (progressText) {
+        progressText.textContent = percentage + '%';
+    }
+}
+
+function toggleAllTopics(stageCheckbox) {
+    const stepContainer = stageCheckbox.closest('.roadmap-step');
+    if (!stepContainer) return;
+    const topicCheckboxes = stepContainer.querySelectorAll('.topics-list input[type="checkbox"]');
+    topicCheckboxes.forEach(cb => {
+        cb.checked = stageCheckbox.checked;
+    });
+    updateProgressBar();
+}
+
+function updateStageCheckbox(topicCheckbox) {
+    const stepContainer = topicCheckbox.closest('.roadmap-step');
+    if (!stepContainer) return;
+    const stageCheckbox = stepContainer.querySelector('.step-checkbox input[type="checkbox"]');
+    const topicCheckboxes = stepContainer.querySelectorAll('.topics-list input[type="checkbox"]');
+    if (stageCheckbox && topicCheckboxes.length > 0) {
+        const allChecked = Array.from(topicCheckboxes).every(cb => cb.checked);
+        stageCheckbox.checked = allChecked;
+    }
+    updateProgressBar();
+}
 
 
