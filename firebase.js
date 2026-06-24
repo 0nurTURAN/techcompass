@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBwyxGNhzZ5NzaZu8hShR5m5qEE9fz3qgU",
+  apiKey: "",
   authDomain: "techcompassgiris.firebaseapp.com",
   projectId: "techcompassgiris",
   storageBucket: "techcompassgiris.firebasestorage.app",
